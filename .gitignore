@@ -1,0 +1,16 @@
+__pycache__/
+.mypy_cache
+.pytest_cache
+.venv/*
+!.venv/pip.conf
+.vscode
+htmlcov/
+.coverage
+.DS_Store
+.idea/*
+.python-version
+.terraform
+build/
+dist/
+*.egg-info/
+*.code-workspace
