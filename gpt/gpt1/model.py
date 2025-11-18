@@ -39,6 +39,40 @@ class MultiHeadAttention(nn.Module):
         return self.dropout(self.proj(torch.cat([h(x) for h in self.heads], dim=-1)))
 
 
+class MultiHeadAttentionBatched(nn.Module):
+    def __init__(self, n_embed: int, num_heads: int = N_EMBED) -> None:
+        super().__init__()
+        self.num_head = num_heads
+        self.head_size = n_embed // num_heads
+        if n_embed % num_heads != 0:
+            raise ValueError("Embedding size must be divisible by number of heads")
+        self.qkv_proj = nn.Linear(N_EMBED, 3 * N_EMBED)
+        self.proj = nn.Linear(N_EMBED, N_EMBED)
+        self.dropout = nn.Dropout(DROPOUT)
+        self.register_buffer(
+            "tril", torch.tril(torch.ones(CONTEXT_LENGTH, CONTEXT_LENGTH).unsqueeze(0).unsqueeze(0))
+        )
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        B, T, C = x.shape
+        qkv = self.qkv_proj(x)
+        query, key, value = qkv.chunk(3, -1)
+        # B, head_size, T, num_head
+        query = query.view(B, T, self.num_head, self.head_size).transpose(1, 2)
+        # B, head_size, T, num_head
+        key = key.view(B, T, self.num_head, self.head_size).transpose(1, 2)
+        # B, head_size, T, num_head
+        value = value.view(B, T, self.num_head, self.head_size).transpose(1, 2)
+        attn = query @ key.transpose(-2, -1) * self.head_size**-0.5
+        attn = attn.masked_fill(self.tril == 0, float("-inf"))
+        attn = F.softmax(attn, dim=-1)
+        attn = self.dropout(attn)
+        output = attn @ value
+        output = output.transpose(1, 2).contiguous().view(B, T, self.num_head * self.head_size)
+        output = self.proj(output)
+        return output
+
+
 class FeedForward(nn.Module):
     def __init__(self, n_embed: int = N_EMBED) -> None:
         super().__init__()
@@ -57,7 +91,7 @@ class Block(nn.Module):
     def __init__(self, n_embed: int, n_head: int) -> None:
         super().__init__()
         head_size = n_embed // n_head
-        self.sa = MultiHeadAttention(n_head, head_size)
+        self.sa = MultiHeadAttentionBatched(n_embed, n_head)
         self.ffwd = FeedForward(n_embed)
         self.ln1 = nn.LayerNorm(n_embed)
         self.ln2 = nn.LayerNorm(n_embed)
