@@ -1,0 +1,38 @@
+[project]
+name = "cocoa-rag"
+version = "1.0.0"
+description = "RAG system for CIM-10 medical code suggestion based on the CoCoA reference document"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "chromadb>=1.5.0",
+    "fastapi>=0.129.0",
+    "httpx>=0.28.1",
+    "openai>=2.21.0",
+    "pydantic>=2.12.5",
+    "pymupdf>=1.27.1",
+    "python-dotenv>=1.2.1",
+    "streamlit>=1.54.0",
+    "tiktoken>=0.12.0",
+    "uvicorn>=0.40.0",
+]
+
+[project.scripts]
+ingest = "src.ingest:main"
+evaluate = "src.evaluate:main"
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+ignore = []
+
+[tool.ruff.format]
+quote-style = "double"
+
+[dependency-groups]
+dev = [
+    "ruff>=0.15.4",
+]

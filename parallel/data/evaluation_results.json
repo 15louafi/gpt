@@ -1,0 +1,227 @@
+{
+  "metrics": {
+    "hit_at_3": 1.0,
+    "hit_at_5": 1.0,
+    "mean_recall": 1.0,
+    "mean_latency": 12.775333333333332,
+    "total_cases": 15
+  },
+  "details": [
+    {
+      "input": "Dyspnée à l'effort",
+      "expected": [
+        "R06.0"
+      ],
+      "suggested": [
+        "R06.0"
+      ],
+      "hit_at_3": true,
+      "hit_at_5": true,
+      "recall": 1.0,
+      "latency": 9.97
+    },
+    {
+      "input": "Toux purulente",
+      "expected": [
+        "R05"
+      ],
+      "suggested": [
+        "R05",
+        "R09.3",
+        "J41.1"
+      ],
+      "hit_at_3": true,
+      "hit_at_5": true,
+      "recall": 1.0,
+      "latency": 14.03
+    },
+    {
+      "input": "Fièvre",
+      "expected": [
+        "R50"
+      ],
+      "suggested": [
+        "R50.9"
+      ],
+      "hit_at_3": true,
+      "hit_at_5": true,
+      "recall": 1.0,
+      "latency": 8.83
+    },
+    {
+      "input": "Œdème des membres inférieurs",
+      "expected": [
+        "R60"
+      ],
+      "suggested": [
+        "R60",
+        "R60.1"
+      ],
+      "hit_at_3": true,
+      "hit_at_5": true,
+      "recall": 1.0,
+      "latency": 12.36
+    },
+    {
+      "input": "Hyponatrémie",
+      "expected": [
+        "E87.1"
+      ],
+      "suggested": [
+        "E87.10",
+        "E87.1",
+        "E87.18"
+      ],
+      "hit_at_3": true,
+      "hit_at_5": true,
+      "recall": 1.0,
+      "latency": 13.11
+    },
+    {
+      "input": "Hypercalcémie",
+      "expected": [
+        "E83.5"
+      ],
+      "suggested": [
+        "E83.50",
+        "E83.58"
+      ],
+      "hit_at_3": true,
+      "hit_at_5": true,
+      "recall": 1.0,
+      "latency": 11.0
+    },
+    {
+      "input": "Tachycardie",
+      "expected": [
+        "R00.0"
+      ],
+      "suggested": [
+        "R00.0",
+        "I47.2",
+        "I47.1",
+        "I47.9"
+      ],
+      "hit_at_3": true,
+      "hit_at_5": true,
+      "recall": 1.0,
+      "latency": 15.94
+    },
+    {
+      "input": "Détresse respiratoire aiguë",
+      "expected": [
+        "J96.0",
+        "J80"
+      ],
+      "suggested": [
+        "J80",
+        "J96.0",
+        "J96.00",
+        "J96.09"
+      ],
+      "hit_at_3": true,
+      "hit_at_5": true,
+      "recall": 1.0,
+      "latency": 20.07
+    },
+    {
+      "input": "Hypertension artérielle",
+      "expected": [
+        "I10"
+      ],
+      "suggested": [
+        "I10"
+      ],
+      "hit_at_3": true,
+      "hit_at_5": true,
+      "recall": 1.0,
+      "latency": 10.24
+    },
+    {
+      "input": "Diabète de type 2",
+      "expected": [
+        "E11"
+      ],
+      "suggested": [
+        "E11.9",
+        "E11.98"
+      ],
+      "hit_at_3": true,
+      "hit_at_5": true,
+      "recall": 1.0,
+      "latency": 14.64
+    },
+    {
+      "input": "Fibrillation auriculaire",
+      "expected": [
+        "I48"
+      ],
+      "suggested": [
+        "I48.0",
+        "I48.1",
+        "I48.2",
+        "I48.9"
+      ],
+      "hit_at_3": true,
+      "hit_at_5": true,
+      "recall": 1.0,
+      "latency": 16.79
+    },
+    {
+      "input": "Infection pulmonaire à Haemophilus influenzae",
+      "expected": [
+        "J14"
+      ],
+      "suggested": [
+        "J14"
+      ],
+      "hit_at_3": true,
+      "hit_at_5": true,
+      "recall": 1.0,
+      "latency": 10.65
+    },
+    {
+      "input": "Dyslipidémie",
+      "expected": [
+        "E78"
+      ],
+      "suggested": [
+        "E78.5"
+      ],
+      "hit_at_3": true,
+      "hit_at_5": true,
+      "recall": 1.0,
+      "latency": 9.47
+    },
+    {
+      "input": "Insuffisance rénale aiguë",
+      "expected": [
+        "N17"
+      ],
+      "suggested": [
+        "N17.9",
+        "N17.0",
+        "N17.1",
+        "N17.2",
+        "R39.2"
+      ],
+      "hit_at_3": true,
+      "hit_at_5": true,
+      "recall": 1.0,
+      "latency": 13.47
+    },
+    {
+      "input": "Pneumopathie à Haemophilus influenzae",
+      "expected": [
+        "J14"
+      ],
+      "suggested": [
+        "J14"
+      ],
+      "hit_at_3": true,
+      "hit_at_5": true,
+      "recall": 1.0,
+      "latency": 11.06
+    }
+  ]
+}
